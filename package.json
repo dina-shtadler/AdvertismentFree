@@ -1,7 +1,5 @@
 {
-    "description": "A Node.js project",
-"name": "advertisment-free",
-  "version": "1.0.0",
+   
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
