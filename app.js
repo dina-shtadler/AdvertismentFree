@@ -59,8 +59,10 @@ app.use('/', router)
 //יצירת שרת
 
 //מאזין -PORT שעליו ירוץ
-app.listen(3001,(()=>{
-console.log("runing")}))
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 
 app.get('', (req, res) => {
