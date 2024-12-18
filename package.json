@@ -1,8 +1,12 @@
 {
     "description": "A Node.js project",
-
+"name": "advertisment-free",
+  "version": "1.0.0",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
+          "dev": "nodemon app.js"
+
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
