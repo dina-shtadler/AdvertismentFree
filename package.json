@@ -1,4 +1,6 @@
 {
+    "description": "A Node.js project",
+
   "scripts": {
     "start": "nodemon app.js"
   },
