@@ -20,8 +20,29 @@ app.use(cors())
 
 
 // const jwt = require('jsonwebtoken')
+require('dotenv').config();
+// פונקציה להתחברות למסד הנתונים
+async function connectToDatabase() {
+    try {
+        // טוען את ה-URI של MongoDB מהקובץ .env
+        const mongoURI = process.env.PUBLIC_URL;
+
+        // מתחברים למסד הנתונים
+        await mongoose.connect(mongoURI);
+
+        console.log('התחברת בהצלחה למסד הנתונים');
+    } catch (err) {
+        console.error('שגיאה בהתחברות למסד הנתונים:', err);
+    }
+}
+
+// קריאה לפונקציה
+connectToDatabase();
 
 
+
+// module.exports = connectToDB;
+     
 
 // פונקציית חיבור למסד
 // mongoose.connect("process.env.LOCAL_URI", {})
@@ -34,36 +55,35 @@ app.use(cors())
 
 // פונקציה מובנית שמתחברת למסד
 // לפי המחרוזת שמקבלת בסוגריים
-const connectToDB = async () => {
-     await mongoose.connect(process.env.LOCAL_URI)
-}
+// const connectToDB = async () => {
+//      await mongoose.connect(process.env.LOCAL_URI)
+// }
 
 // משתנה מכיל את המסד
-const database = mongoose.connection
+// const database = mongoose.connection
 
-// במקרה של כשלון
-database.on('error', (error) => {
-    console.log('error');
-    console.log(error.message);
-})
-// במקרה של הצלחה
-database.once('connected', () => {
-    console.log('connection succeed!');
-})
+// // במקרה של כשלון
+// database.on('error', (error) => {
+//     console.log('error');
+//     console.log(error.message);
+// })
+// // במקרה של הצלחה
+// database.once('connected', () => {
+//     console.log('connection succeed!');
+// })
 
-module.exports = connectToDB
-connectToDB()
+// module.exports = connectToDB
+// connectToDB()
 
 app.use('/', router)
 
 //יצירת שרת
 
 //מאזין -PORT שעליו ירוץ
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
 
 app.get('', (req, res) => {
     res.status(200).send('😜')
