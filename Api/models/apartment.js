@@ -65,9 +65,8 @@ const ApartmentSchema = mongoose.Schema({
             ref: 'Kategory'}]
            , require: true
         },
-        kodCity: 
-        {
-        type:[{    type: mongoose.Types.ObjectId,
+ kodCity: 
+  { type:[{    type: mongoose.Types.ObjectId,
             ref: 'City'}]
             , require: false
         },

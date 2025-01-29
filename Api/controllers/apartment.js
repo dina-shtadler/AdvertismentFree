@@ -179,20 +179,20 @@ createApartment: async (req, res) => {
             return res.status(404).send({ message: "Publisher not found!" });
         }
 
-        console.log(req.file);
+        // console.log(req.file);
 
         // בדיקת קובץ
-        if (!req.file) {
-            return res.status(400).send({ message: "No file uploaded" });
-        }
+        // if (!req.file) {
+        //     return res.status(400).send({ message: "No file uploaded" });
+        // }
         
-        const { path: picture } = req.file;
-        const { porchSquareMeter, realEstateAgency, porch, squareMeter, numBuild, neighbourhood, street, nameApartment, describe, adress, numRooms, extras, price, kodKategory, kodCity, kodPublisher } = req.body;
+        // const { path: picture } = req.file;
+        const { porchSquareMeter,city, realEstateAgency, porch, squareMeter, numBuild, neighbourhood, street, nameApartment, describe, adress, numRooms, extras, price, kodKategory, kodCity, kodPublisher } = req.body;
 
         const apartment = new Apartment({
-            realEstateAgency, porchSquareMeter, porch, squareMeter, numBuild, neighbourhood, street,
+          city,  realEstateAgency, porchSquareMeter, porch, squareMeter, numBuild, neighbourhood, street,
             nameApartment, describe, adress, numRooms, extras, price, kodKategory, kodCity, kodPublisher,
-            picture: req.file.filename
+            // picture: req.file.filename
         });
 
         console.log('Apartment being created...');
