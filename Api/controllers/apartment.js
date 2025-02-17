@@ -187,10 +187,10 @@ createApartment: async (req, res) => {
         // }
         
         // const { path: picture } = req.file;
-        const { porchSquareMeter,city, realEstateAgency, porch, squareMeter, numBuild, neighbourhood, street, nameApartment, describe, adress, numRooms, extras, price, kodKategory, kodCity, kodPublisher } = req.body;
+        const {datend, porchSquareMeter,city, realEstateAgency, porch, squareMeter, numBuild, neighbourhood, street, nameApartment, describe, adress, numRooms, extras, price, kodKategory, kodCity, kodPublisher } = req.body;
 
         const apartment = new Apartment({
-          city,  realEstateAgency, porchSquareMeter, porch, squareMeter, numBuild, neighbourhood, street,
+        datend,  city,  realEstateAgency, porchSquareMeter, porch, squareMeter, numBuild, neighbourhood, street,
             nameApartment, describe, adress, numRooms, extras, price, kodKategory, kodCity, kodPublisher,
             // picture: req.file.filename
         });

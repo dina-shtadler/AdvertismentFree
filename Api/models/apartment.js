@@ -14,6 +14,9 @@ const ApartmentSchema = mongoose.Schema({
         type: String,
         require: false
     },
+    datend:{type:Date,
+        require:true
+    },
     city: {
         type: String,
         require: false
