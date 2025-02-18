@@ -36,6 +36,10 @@ const ApartmentSchema = mongoose.Schema({
     numRooms: {
         type: Number,
         require: false
+    }, 
+    floor: {
+        type: Number,
+        require: true
     },
     squareMeter: {
         type: Number,
