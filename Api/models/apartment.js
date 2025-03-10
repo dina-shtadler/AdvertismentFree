@@ -62,7 +62,7 @@ const ApartmentSchema = mongoose.Schema({
         require: false
     },
     price: {
-        type: Number,
+        type: String,
         require: false
     },
     kodKategory: 
