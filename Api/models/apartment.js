@@ -65,6 +65,18 @@ const ApartmentSchema = mongoose.Schema({
         type: String,
         require: false
     },
+    phone: {
+        type: String
+    }, 
+    secondPhone: {
+        type: String
+    },
+    email: {
+        type: String,
+        require: true,
+        // regex - ביטויים רגולריים
+        match: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    }, 
     kodKategory: 
     
     {     type:[{
