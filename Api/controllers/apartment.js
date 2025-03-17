@@ -2,6 +2,7 @@ const Apartment = require("../models/apartment")
 const publisher = require("../models/publisher")
 const city = require("../models/city")
 const kategory = require("../models/kategory")
+const { performance } = require('perf_hooks');  // ייבוא מודול הזמן המדויק
 
 module.exports = {
     getAll: (req, res) => {
@@ -168,7 +169,9 @@ module.exports = {
 //                      return res.status(404).send({ error: err.message })
             
 //             }) }, 
-       
+
+
+  
 createApartment: async (req, res) => {
     try {
         console.log(req.body);
@@ -193,6 +196,7 @@ createApartment: async (req, res) => {
             phone,secondPhone,email, floor, datend,  city,  realEstateAgency, porchSquareMeter, porch, squareMeter, numBuild, neighbourhood, street,
             nameApartment, describe, adress, numRooms, extras, price, kodKategory, kodCity, kodPublisher,
             // picture: req.file.filename
+
         });
 
         console.log('Apartment being created...');

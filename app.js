@@ -2,6 +2,8 @@ const express = require('express')
 const bodyparser= require('body-parser')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
+const Apartment = require('./Api/models/apartment');  // החלף לפי נתיב המודל שלך
+
 const router = require('./Api/routes/api')
 const cors=require('cors')
 const app = express()
@@ -31,6 +33,13 @@ async function connectToDatabase() {
         await mongoose.connect(mongoURI);
 
         console.log('התחברת בהצלחה למסד הנתונים');
+        
+Apartment.collection.createIndex({ kodPublisher: 1 });
+Apartment.collection.createIndex({ kodKategory: 1 });
+Apartment.ensureIndexes()
+    .then(() => console.log('Indexes created successfully!'))
+    .catch(err => console.error('Error creating indexes:', err));
+
     } catch (err) {
         console.error('שגיאה בהתחברות למסד הנתונים:', err);
     }
@@ -38,7 +47,6 @@ async function connectToDatabase() {
 
 // קריאה לפונקציה
 connectToDatabase();
-
 
 
 // module.exports = connectToDB;
