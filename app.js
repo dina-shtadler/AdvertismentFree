@@ -85,6 +85,43 @@ connectToDatabase();
 
 app.use('/', router)
 
+const puppeteer = require('puppeteer');
+
+app.get('/scrape', async (req, res) => {
+  
+  const pagesToScrape = [
+    'https://sarsoor.org', // עמוד הבית
+    'https://www.sarsoor.org/#/apartmentForRent', // עמוד המוצרים
+    'https://www.sarsoor.org/#/apartmentForSale', // עמוד הבלוג
+    'https://www.sarsoor.org/#/apartmentHoliday' // עמוד החופשות
+  ];
+
+  const contentResults = [];  // אוסף את התוכן לכל הדפים
+
+  try {
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+  
+    // עבור על כל הדפים
+    for (let url of pagesToScrape) {
+      await page.goto(url, { waitUntil: 'domcontentloaded' });  // חכה עד שהדף יטען
+      await page.waitForSelector('body');  // המתן עד שהדף ייטען
+      
+      const content = await page.content();  // חילוץ התוכן של הדף
+      contentResults.push({ url, content });  // שמור את התוכן
+    }
+  
+    await browser.close();
+    
+    // החזר את התוכן כתגובה ללקוח
+    res.json(contentResults);
+  } catch (error) {
+    console.error('שגיאה בסריקה:', error);
+    res.status(500).send('שגיאה בסריקה');
+  }
+});
+
+
 //יצירת שרת
 
 //מאזין -PORT שעליו ירוץ
