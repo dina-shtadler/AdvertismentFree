@@ -1,7 +1,9 @@
 {
   "scripts": {
-    "start": "node app.js"
-    ,  "postinstall": "npx puppeteer install"
+    "build": "npx puppeteer install && node app.js",
+  "postinstall": "npx puppeteer install",
+      "start": "node app.js"
+
 
   },
 
