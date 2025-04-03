@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "npx puppeteer install && node app.js",
-  "postinstall": "npx puppeteer install",
+  "postinstall": "npx puppeteer install --chrom",
       "start": "node app.js"
 
 
